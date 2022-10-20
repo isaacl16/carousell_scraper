@@ -1,0 +1,29 @@
+[
+  {
+    "chatId": "218219560",
+    "searchList": [
+      {
+        "searchString": "iphone 12 pro",
+        "priceRange": {
+          "min": 1000,
+          "max": 1700
+        }
+      },
+      {
+        "searchString": "iphone 13 pro"
+      }
+    ]
+  },
+  {
+    "chatId": "1465081911",
+    "searchList": [
+      {
+        "searchString": "iphone 12 pro",
+        "priceRange": {
+          "min": 1000,
+          "max": 1700
+        }
+      }
+    ]
+  }
+]
