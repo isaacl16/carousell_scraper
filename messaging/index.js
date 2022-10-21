@@ -5,6 +5,7 @@ const token = process.env.TELEGRAM_BOT_TOKEN
 exports.telegram = (data, chatId) => {
     const urls = data
     const bot = new TelegramBot(token)
+    console.log("Sending to telegram chatId: " + chatId)
     for (const url of urls) {
         bot.sendMessage(chatId, url.title + '\n' + url.url).catch((err) => {
             console.log(err)

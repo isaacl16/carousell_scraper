@@ -2,8 +2,9 @@ require('dotenv').config();
 const puppeteer = require('puppeteer');
 const axios = require('axios');
 const fs = require('fs')
+const utils = require('../utils')
 
-let searchSize = 10
+let searchSize = 5
 
 
 exports.getTokens = async () => {
@@ -50,8 +51,8 @@ exports.getTokens = async () => {
         );
         await page.goto('https://www.carousell.com/');
 
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
+        console.log(err.message);
     } finally {
         if (browser) {
             await browser.close();
@@ -66,43 +67,40 @@ exports.getTokens = async () => {
 
 exports.getListings = async (tokens, chatId, search) => {
     const searchString = search.searchString
-    let filters = []
-    let prefill = {}
+    const fileName = chatId + "_" + searchString + ".json"
+
+    let filters = [{
+        fieldName: "price",
+    }]
+    let prefill = {
+        "prefill_sort_by": "3"
+    }
     let jsonData = {}
 
-    if (search.priceRange) {
-        const min = search.priceRange.min
-        const max = search.priceRange.max
-        filters = [{
-            fieldName: "price",
-            rangedFloat: {
-                start: {
-                    value: min
-                },
-                end: {
-                    value: max
-                },
-            }
-        }]
-        prefill = {
-            "prefill_price_start": `${min}`,
-            "prefill_price_end": `${max}`,
-            "prefill_sort_by": "3"
-        }
-    } else {
-        filters = []
-        prefill = {
-            "prefill_sort_by": "3"
-        }
-    }
+    jsonData = utils.readData(fileName)
+    // await fs.readFile(`./data/${fileName}`, (err, data) => {
+    //     if (err) {
+    //         console.log(fileName + ' not found')
+    //     } else {
+    //         jsonData = JSON.parse(data)
+    //     }
+    // });
 
-    await fs.readFile(`./json/${chatId}.json`, (err, data) => {
-        if (err) {
-            console.log(chatId + ".json not found")
-        } else {
-            jsonData = JSON.parse(data)
+
+    if (search.priceRange) {
+        const min = search.priceRange.min ? search.priceRange.min : null
+        const max = search.priceRange.max ? search.priceRange.max : null
+        const rangedFloat = {}
+        if (min) {
+            rangedFloat['start'] = { value: min }
+            prefill['prefill_price_start'] = min
         }
-    });
+        if (max) {
+            rangedFloat['end'] = { value: max }
+            prefill['prefill_price_end'] = max
+        }
+        filters[0][rangedFloat] = rangedFloat
+    }
 
     const options = {
         method: 'POST',
@@ -134,16 +132,18 @@ exports.getListings = async (tokens, chatId, search) => {
 
     return await axios.request(options).then((res) => {
         let data = res.data.data.results
-        return processListings(jsonData, data, chatId)
+        const processedListing = processListings(jsonData, data)
+        utils.writeData(fileName, processedListing.updatedJsonData)
+        return processedListing.result
     }).catch((err) => {
-        console.error(err);
+        console.error(err.message);
     });
 
 
 }
 
-const processListings = (jsonData, data, chatId) => {
-
+const processListings = (jsonData, data) => {
+    const updatedJsonData = jsonData
     const listings = data
     const result = []
     for (const listing of data) {
@@ -154,11 +154,8 @@ const processListings = (jsonData, data, chatId) => {
                 title: title,
                 url: "https://www.carousell.sg/p/" + id
             })
-            jsonData[id] = 0
+            updatedJsonData[id] = 0
         }
     }
-    jsonString = JSON.stringify(jsonData)
-    fs.writeFile(`./json/${chatId}.json`, jsonString, 'utf8', () => { console.log("write to " + chatId + ".json complete") });
-    console.log(result)
-    return result
+    return { result: result, updatedJsonData: updatedJsonData }
 }

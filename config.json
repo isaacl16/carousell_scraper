@@ -3,14 +3,23 @@
     "chatId": "218219560",
     "searchList": [
       {
-        "searchString": "iphone 12 pro",
+        "searchString": "patagonia",
         "priceRange": {
-          "min": 1000,
-          "max": 1700
+          "max": 25
         }
       },
       {
-        "searchString": "iphone 13 pro"
+        "searchString": "Edifier",
+        "priceRange": {
+          "min": 200
+        }
+      },
+      {
+        "searchString": "iphone 14 pro",
+        "priceRange": {
+          "min": 5,
+          "max": 30
+        }
       }
     ]
   },
@@ -18,7 +27,7 @@
     "chatId": "1465081911",
     "searchList": [
       {
-        "searchString": "iphone 12 pro",
+        "searchString": "iphone 14 pro",
         "priceRange": {
           "min": 1000,
           "max": 1700
