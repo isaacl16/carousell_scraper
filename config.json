@@ -34,5 +34,17 @@
         }
       }
     ]
+  },
+  {
+    "chatId": "253433154",
+    "searchList": [
+      {
+        "searchString": "Nike bags",
+        "priceRange": {
+          "min": 20,
+          "max": 200
+        }
+      }
+    ]
   }
 ]

@@ -4,7 +4,7 @@ const axios = require('axios');
 const fs = require('fs')
 const utils = require('../utils')
 
-let searchSize = 5
+let searchSize = 10
 
 
 exports.getTokens = async () => {
@@ -147,11 +147,24 @@ const processListings = (jsonData, data) => {
     const listings = data
     const result = []
     for (const listing of data) {
-        const id = listing.listingCard.id
-        const title = listing.listingCard.title
+        const listingCard = listing.listingCard
+        const id = listingCard.id
+        const title = listingCard.title
+        const price = listingCard.price
+        let epoch = listingCard.aboveFold[0].timestampContent.seconds.low
+
+        // const time = dateTime * 1000 + timeZone * 1000
+        // let date = new Date(epoch)
+        // date = date.toUTCString()
+        let date = new Date(1970)
+        date.setSeconds(epoch + 28800)
+        date = date.toUTCString()
+        console.log(date)
         if (!(id in jsonData)) {
             result.push({
                 title: title,
+                price: price,
+                date: date,
                 url: "https://www.carousell.sg/p/" + id
             })
             updatedJsonData[id] = 0

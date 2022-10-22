@@ -3,7 +3,6 @@ const messaging = require('./messaging');
 const fs = require('fs');
 
 const main = async () => {
-
     let usersConfig = fs.readFileSync('./config.json');
     userConfig = JSON.parse(usersConfig)
     const tokens = await carousell.getTokens();
@@ -15,7 +14,6 @@ const main = async () => {
                 messaging.telegram(listings, chatId)
         }
     }
-
 }
 
 main()
