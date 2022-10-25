@@ -46,5 +46,25 @@
         }
       }
     ]
+  },
+  {
+    "chatId": "358653249",
+    "searchList": [
+      {
+        "searchString": "iphone 13 pro",
+        "priceRange": {
+          "min": 900,
+          "max": 1200
+        }
+      }
+    ]
+  },
+  {
+    "chatId": "416039220",
+    "searchList": [
+      {
+        "searchString": "iphone 14 pro"
+      }
+    ]
   }
 ]

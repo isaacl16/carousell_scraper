@@ -78,14 +78,6 @@ exports.getListings = async (tokens, chatId, search) => {
     let jsonData = {}
 
     jsonData = utils.readData(fileName)
-    // await fs.readFile(`./data/${fileName}`, (err, data) => {
-    //     if (err) {
-    //         console.log(fileName + ' not found')
-    //     } else {
-    //         jsonData = JSON.parse(data)
-    //     }
-    // });
-
 
     if (search.priceRange) {
         const min = search.priceRange.min ? search.priceRange.min : null
@@ -159,7 +151,6 @@ const processListings = (jsonData, data) => {
         let date = new Date(1970)
         date.setSeconds(epoch + 28800)
         date = date.toUTCString()
-        console.log(date)
         if (!(id in jsonData)) {
             result.push({
                 title: title,
