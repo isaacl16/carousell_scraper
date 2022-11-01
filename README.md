@@ -43,7 +43,7 @@ npm install
 > The price range, min and max value are optional
 4. Create a .env file and add in the Telegram bot token
 ```
-TELEGRAM_BOT_TOKEN = 'Token Here'
+TELEGRAM_BOT_TOKEN = '<Telegram Bot Token>'
 ```
 5. Run the application
 ```
