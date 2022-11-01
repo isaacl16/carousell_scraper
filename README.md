@@ -52,7 +52,7 @@ npm start
 
 ## Explanation
 ---
-Carousell requires the use of a `csrf-token` (essentially it is a randomly generated session token) and `cookies` when making HTTP requests. Making HTTP requests without them will result in  `HTTPS Error 403`. Thus, the work around is to use a `Puppeteer` to intercept requests when accessing their website to look for the `csrf-token` and `cookies`, and use them in future HTTP requests to Carousell.
+Carousell requires the use of a `csrf-token` and `cookies` when making HTTP requests. Making HTTP requests without them will result in  `HTTPS Error 403`. Thus, the work around is to use a `Puppeteer` to intercept requests when accessing their website to look for the `csrf-token` and `cookies`, and use them in future HTTP requests to Carousell.
 
 ## Addition 
 ---
