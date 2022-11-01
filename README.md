@@ -4,7 +4,6 @@ This repo contains an application that scrapes carousell listings and messages t
 
 The application makes use of `Puppeteer` (Headless Chrome API Node Library) for retrieving tokens and cookies and `node-telegram-bot-api` (Telegram API Node Library)
 to send messages to a user on Telegram.
-> This project was done completely out of leisure and in a way of trying to simplify the process of having to check for carousell listings.
 ## Requirements
 ---
 * [Telegram bot created](https://telegram.me/BotFather)
