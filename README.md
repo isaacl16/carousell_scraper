@@ -1,4 +1,4 @@
-# Carousell-Scraper-Lambda
+# Carousell-Scraper
 
 This repo contains an application that scrapes carousell listings and messages the results on telegram using a telegram bot.
 
