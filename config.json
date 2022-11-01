@@ -1,69 +1,13 @@
 [
   {
-    "chatId": "218219560",
+    "chatId": "<Telegram Chat Id>",
     "searchList": [
       {
-        "searchString": "patagonia",
+        "searchString": "<Search>",
         "priceRange": {
-          "max": 25
+          "min": "<Min Value>",
+          "max": "<Max Value>"
         }
-      },
-      {
-        "searchString": "Edifier",
-        "priceRange": {
-          "min": 200
-        }
-      },
-      {
-        "searchString": "iphone 14 pro",
-        "priceRange": {
-          "min": 5,
-          "max": 30
-        }
-      }
-    ]
-  },
-  {
-    "chatId": "1465081911",
-    "searchList": [
-      {
-        "searchString": "iphone 14 pro",
-        "priceRange": {
-          "min": 1000,
-          "max": 1700
-        }
-      }
-    ]
-  },
-  {
-    "chatId": "253433154",
-    "searchList": [
-      {
-        "searchString": "Nike bags",
-        "priceRange": {
-          "min": 20,
-          "max": 200
-        }
-      }
-    ]
-  },
-  {
-    "chatId": "358653249",
-    "searchList": [
-      {
-        "searchString": "iphone 13 pro",
-        "priceRange": {
-          "min": 900,
-          "max": 1200
-        }
-      }
-    ]
-  },
-  {
-    "chatId": "416039220",
-    "searchList": [
-      {
-        "searchString": "iphone 14 pro"
       }
     ]
   }
