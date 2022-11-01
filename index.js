@@ -30,16 +30,4 @@ const main = async () => {
     })
 }
 
-// const scrapeAndSend = () => {
-//    for (user of userConfig) {
-//         const chatId = user.chatId
-//         for (search of user.searchList) {
-//             const listings = await carousell.getListings(tokens, chatId, search);
-//             if (listings.length > 0)
-//                 messaging.telegram(listings, chatId)
-//         }
-//     }
-// }
-
-
 main()
